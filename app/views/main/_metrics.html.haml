@@ -1,0 +1,13 @@
+.page-header
+  %h2
+    Supported integrations
+- providers.each do |provider|
+  .col-lg-2.provider
+    = link_to provider.website_link, :target => "_blank" do
+      %h3.logo-header= provider.title
+    = link_to provider.credential_link do
+      - greyed = current_user && !provider.credential?
+      = image_tag("logos/#{provider.name}.png",
+                alt: "#{provider.title} Logo",
+                class: "logo #{greyed && "greyed"}",
+                title: provider.status)

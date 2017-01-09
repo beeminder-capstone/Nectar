@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "PSU CS Capstone", :name => "author"}
+    %title= content_for?(:title) ? yield(:title) : 'Nectar'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Nectar adds support for more integrations on Beeminder'}"}
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'layouts/navigation'
+    %main
+      .container
+        = render 'layouts/messages'
+        = yield
+
+      %footer.footer
+        .container
+          %p.text-muted
+            = link_to 'Home', root_path
+            |
+            &copy;
+            %a{ href: "https://www.pdx.edu/", :target => "_blank" } PSU
+            %a{ href: "https://www.pdx.edu/computer-science/", :target => "_blank" } CS
+            #{link_to 'Capstone', 'http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html', :target => "_blank"}. Source Code:
+            #{link_to 'https://github.com/beeminder-capstone/Nectar', 'https://github.com/beeminder-capstone/Nectar', :target => "_blank"}. Adapted from 
+            %a{ href: "https://github.com/tsubery", :target => "_blank" } Gal Tsubery's
+            #{link_to 'Quantifier', 'https://github.com/tsubery/quantifier/', :target => "_blank"}, free software under the
+            #{link_to 'MIT License', 'https://github.com/tsubery/quantifier/blob/master/LICENSE', :target => "_blank"}.
+
+

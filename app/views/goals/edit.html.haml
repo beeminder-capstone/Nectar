@@ -1,0 +1,87 @@
+- content_for :title do
+  Nectar | 
+  - if goal.persisted?
+    Edit Goal: 
+  - else
+    Add Goal: 
+  = [ provider.title, metric.title ].join(" - ")
+:javascript
+  $(document).ready(function() {
+    var new_goal_value = $('input:checked[name="goal[new_goal]"]').val() == "true";
+    
+    $('#new').toggle(new_goal_value);
+    $('#existing').toggle(!new_goal_value);
+  });
+.container
+  .row
+    %h1
+      - if goal.persisted?
+        Edit Goal
+      - else
+        Add Goal
+    .page-header
+      %h2
+        = [ provider.title, metric.title ].join(" - ")
+        = goal.delete_link if goal.persisted?
+    .col-lg-9
+      %h3
+        Decription
+      %p
+        = metric.description
+  .row
+    .col-lg-4
+      = simple_form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
+        .radio
+          = f.radio_button :new_goal, true, {:checked => true}
+          = f.label :newgoal, "Create a new Beeminder goal"
+        .radio
+          = f.radio_button :new_goal, false
+          = f.label :existinggoal, "Use an existing goal"
+        :javascript
+          $('input[name="goal[new_goal]"]').click(function() {
+            var new_goal_value = $('input:checked[name="goal[new_goal]"]').val() == "true";
+            
+            $('#new').toggle(new_goal_value);
+            $('#existing').toggle(!new_goal_value);
+          });
+        #new
+          .form-group
+            = f.input :slug, {as: :string, label: "Short Goal Name:", placeholder: provider.title.downcase, input_html: {class: "form-control"}}
+          .form-group
+            = f.input :title, {as: :string, label: "Long Goal Name:", placeholder: [ provider.title, metric.title ].join(" "), input_html: {class: "form-control"}}
+          .form-group
+            = f.label :beeminder_types, "Select one of the Beeminder goal types:"
+            = f.select :type, available_types, {prompt: "Select Beeminder goal type"}, { class: "form-control" }
+          .form-group
+            = f.input :rate, {as: :integer, label: "Pledge Value per Day:", hint: "E.g Number of steps per day.", input_html: {class: "form-control"}}
+        #existing
+          .form-group
+            = f.label :beeminder_slug, "Select one of your Beeminder goals:"
+            = f.select :slug, available_goal_slugs, { prompt: "Select Beeminder slug"}, { class: "form-control" }
+        = f.fields_for :params do |pf|
+          - extra_configuration = self.instance_exec(credential.client, f.object.params, pf, &metric.configuration)
+          - extra_configuration.each do |(label, input)|
+            .form-group
+              = pf.label label
+              = input
+          - template_name = "goals/#{provider.name}_#{metric.key}"
+          - if lookup_context.template_exists?(template_name, [], true)
+            = render template_name, pf: pf, params: f.object.params
+        .checkbox
+          = f.input :active, {label: "Enabled"}
+        = f.button :submit, {input_html: {class: %i(btn btn-default)}}
+    .col-lg-1
+    - if goal.persisted?
+      .col-lg-4
+        %h3 Last Datapoint
+        %table.table.table-responsive#current-score
+          %thead
+            %tr
+              %td Timestamp
+              %td Value
+          %tbody
+            - goal.safe_fetch_scores.each do |datapoint|
+              %tr
+                %td= datapoint.timestamp || "Now"
+                %td= datapoint.value
+

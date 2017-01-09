@@ -1,0 +1,7 @@
+%li
+  = link_to 'Home', root_path
+%li
+  - if user_signed_in?
+    = link_to 'Log out', signout_path
+  - else
+    = link_to 'Log in', signin_path

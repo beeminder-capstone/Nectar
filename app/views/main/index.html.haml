@@ -1,0 +1,17 @@
+- content_for :title do
+  Nectar | Home
+
+.row
+  = render "welcome"
+.row
+  - if current_user && current_user.goals.count > 0
+    = render "my_goals"
+- unless current_user
+  .row
+    %p
+      Please,
+      =link_to "Log in", signin_path
+      with your Beeminder account.
+.row#main_metrics
+  = render "metrics"
+

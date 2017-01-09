@@ -1,0 +1,14 @@
+{
+	"app/services/*.rb": {
+		"type": "service"
+	},
+	"app/workers/*_worker.rb": {
+		"type": "worker"
+	},
+	"app/adapters/*.rb": {
+		"type": "adapter"
+	},
+	"app/metrics/*.rb": {
+		"type": "metric"
+	}
+}
