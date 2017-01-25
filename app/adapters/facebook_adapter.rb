@@ -17,3 +17,10 @@ class FacebookAdapter < BaseAdapter
     end
   end
 end
+
+def client
+  Koala::Facebook::Api.new(
+      oath_access_token: Rails.application.secrets.facebook_provider_key,
+      app_secret: Rails.application.secrets.facebook_secret_key
+  )
+end
