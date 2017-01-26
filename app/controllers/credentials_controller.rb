@@ -17,7 +17,7 @@ class CredentialsController < AuthenticatedController
 
   def new
     if credential.persisted?
-      redirect_to root_path
+      redirect_to provider.credential_link
     elsif provider.oauth?
       redirect_to "/auth/#{provider.name}"
     else
