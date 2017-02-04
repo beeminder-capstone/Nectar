@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/beeminder-capstone/Nectar-Backend.svg?branch=master)](https://travis-ci.org/beeminder-capstone/Nectar-Backend)
 # Nectar Backend
 Backend for Nectar app
 
