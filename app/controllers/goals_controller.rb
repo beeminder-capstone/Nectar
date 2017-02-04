@@ -26,6 +26,10 @@ class GoalsController < AuthenticatedController
   helper_method def available_types
     @_available_types = [:fatloser, :hustler, :biker, :inboxer, :gainer, :drinker]
   end
+  
+  helper_method def pledge_rates
+    @_pledge_rates = [:y, :m, :w, :d, :h]
+  end
 
   def edit
     if credential.nil?
@@ -66,7 +70,7 @@ class GoalsController < AuthenticatedController
     params.require(:goal)
           .permit(:id, :slug, :params, :active, :new_goal,
                   params: [
-                    :exponent, :timezone, :bed_time_hour, :bed_time_minute, :title, :type, :rate,
+                    :exponent, :timezone, :bed_time_hour, :bed_time_minute, :title, :type, :rate, :gunits, :runits,
                     list_ids: [],
                     source_slugs: slug_keys
                   ])

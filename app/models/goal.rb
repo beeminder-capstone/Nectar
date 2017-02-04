@@ -19,10 +19,10 @@ class Goal < ActiveRecord::Base
 
   delegate :provider, to: :credential
   
-  attr_accessor :new_goal, :title, :type, :rate
+  attr_accessor :new_goal, :title, :type, :rate, :gunits, :runits
 
   validates :slug, :new_goal, presence: true
-  validates :title, :type, :rate, presence: true, if: :new_goal
+  validates :title, :type, :rate, :gunits, :runits, presence: true, if: :new_goal
   validate :valid_params
 
   scope :active, -> { where(active: true) }
@@ -32,7 +32,7 @@ class Goal < ActiveRecord::Base
 		t = Time.now
 		decade = 60 * 60 * 24 * 365 * 10
 		goaldate = t.to_i + decade
-		credential.client.create_goal(slug: :slug, title: :title, goal_type: :type, goaldate: goaldate, rate: :rate)
+		credential.client.create_goal(slug: :slug, title: :title, goal_type: :type, goaldate: goaldate, rate: :rate, gunits: :gunits, runits: :runits)
 	end
   end
 

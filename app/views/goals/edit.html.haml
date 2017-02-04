@@ -53,7 +53,12 @@
             = f.label :beeminder_types, "Select one of the Beeminder goal types:"
             = f.select :type, available_types, {prompt: "Select Beeminder goal type"}, { class: "form-control" }
           .form-group
-            = f.input :rate, {as: :integer, label: "Pledge Value per Day:", hint: "E.g Number of steps per day.", input_html: {class: "form-control"}}
+            = f.input :rate, {as: :integer, label: "Pledge Value:", hint: "E.g *Number* of steps per day.", input_html: {class: "form-control"}}
+          .form-group
+            = f.input :gunits, {as: :string, label: "Pledge Units:", placeholder: "steps", hint: "E.g Number of *steps* per day.", input_html: {class: "form-control"}}
+          .form-group
+            = f.label :rate_units, "Select one of the Pledge Rates:"
+            = f.select :runits, pledge_rates, {prompt: "Select a Pledge Rate"}, { class: "form-control" }
         #existing
           .form-group
             = f.label :beeminder_slug, "Select one of your Beeminder goals:"
