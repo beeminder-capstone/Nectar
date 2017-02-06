@@ -9,7 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :trello,
            Rails.application.secrets.trello_provider_key,
            Rails.application.secrets.trello_provider_secret,
-           app_name: "Beemind.me",
+           app_name: "Nectar",
            scope: "read",
            expiration: "never"
 
