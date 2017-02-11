@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :user_signed_in?
+  
+  helper_method def providers
+    @_providers ||= PROVIDERS.map do |name, provider|
+      ProviderDecorator.new(provider, credentials[name])
+    end
+  end
+  
+  helper_method def credentials
+    @_credentials ||= Array(current_user&.credentials).map do |c|
+      [c.provider_name, c]
+    end.to_h.with_indifferent_access
+  end
 
   private
 
