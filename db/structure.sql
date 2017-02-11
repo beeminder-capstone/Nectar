@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.5.2
+-- Dumped from database version 9.5.5
+-- Dumped by pg_dump version 9.5.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -54,9 +54,9 @@ CREATE TABLE credentials (
     beeminder_user_id character varying NOT NULL,
     provider_name character varying NOT NULL,
     uid character varying DEFAULT ''::character varying NOT NULL,
-    info json DEFAULT '{}'::json NOT NULL,
-    credentials json DEFAULT '{}'::json NOT NULL,
-    extra json DEFAULT '{}'::json NOT NULL,
+    info json DEFAULT '"{}"'::json NOT NULL,
+    credentials json DEFAULT '"{}"'::json NOT NULL,
+    extra json DEFAULT '"{}"'::json NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     password character varying DEFAULT ''::character varying NOT NULL
@@ -219,18 +219,19 @@ ALTER TABLE ONLY goals
 
 
 --
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
 -- Name: scores_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY scores
     ADD CONSTRAINT scores_pkey PRIMARY KEY (id);
-
-
---
--- Name: fk__goals_provider_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX fk__goals_provider_id ON goals USING btree (credential_id);
 
 
 --
@@ -283,34 +284,19 @@ CREATE UNIQUE INDEX index_users_on_beeminder_user_id ON users USING btree (beemi
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: fk_credentials_beeminder_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY credentials
-    ADD CONSTRAINT fk_credentials_beeminder_user_id FOREIGN KEY (beeminder_user_id) REFERENCES users(beeminder_user_id);
-
-
---
--- Name: fk_goals_provider_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY goals
-    ADD CONSTRAINT fk_goals_provider_id FOREIGN KEY (credential_id) REFERENCES credentials(id);
-
-
---
--- Name: fk_scores_goal_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_848d25a52b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY scores
-    ADD CONSTRAINT fk_scores_goal_id FOREIGN KEY (goal_id) REFERENCES goals(id);
+    ADD CONSTRAINT fk_rails_848d25a52b FOREIGN KEY (goal_id) REFERENCES goals(id);
+
+
+--
+-- Name: fk_rails_a0e95161f7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY credentials
+    ADD CONSTRAINT fk_rails_a0e95161f7 FOREIGN KEY (beeminder_user_id) REFERENCES users(beeminder_user_id);
 
 
 --
