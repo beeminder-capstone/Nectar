@@ -21,12 +21,14 @@ class Goal < ActiveRecord::Base
   
   attr_accessor :new_goal, :title, :type, :rate, :gunits, :runits
 
-  validates :slug, :new_goal, presence: true
-  validates :title, :type, :rate, :gunits, :runits, presence: true, if: :new_goal
+  validates :slug, presence: true
+  #validates :slug, :new_goal, presence: true
+  #validates :title, :type, :rate, :gunits, :runits, presence: true, if: :new_goal
   validate :valid_params
 
   scope :active, -> { where(active: true) }
   
+=begin
   before_create do
 	if new_goal
 		t = Time.now
@@ -35,6 +37,7 @@ class Goal < ActiveRecord::Base
 		credential.client.create_goal(slug: :slug, title: :title, goal_type: :type, goaldate: goaldate, rate: :rate, gunits: :gunits, runits: :runits)
 	end
   end
+=end
 
   def metric
     provider.find_metric(metric_key)

@@ -30,7 +30,7 @@
         = metric.description
   .row
     .col-lg-4
-      = simple_form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
+      -#= simple_form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
         .radio
           = f.radio_button :new_goal, true, {:checked => true}
           = f.label :newgoal, "Create a new Beeminder goal"
@@ -75,6 +75,23 @@
         .checkbox
           = f.input :active, {label: "Enabled"}
         = f.button :submit, {input_html: {class: %i(btn btn-default)}}
+      = form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
+        .form-group
+          = f.label :beeminder_slug
+          = f.select :slug, available_goal_slugs, { prompt: "Select Beeminder Slug"},{ class: "form-control" }
+        .form-group
+          = f.check_box :active
+          = f.label :active, "Enabled"
+        = f.fields_for :params do |pf|
+          - extra_configuration = self.instance_exec(credential.client, f.object.params, pf, &metric.configuration)
+          - extra_configuration.each do |(label, input)|
+            .form-group
+              = pf.label label
+              = input
+          - template_name = "goals/#{provider.name}_#{metric.key}"
+          - if lookup_context.template_exists?(template_name, [], true)
+            = render template_name, pf: pf, params: f.object.params
+        = f.submit "Save", class: %i(btn btn-default)
     .col-lg-1
     - if goal.persisted?
       .col-lg-4
