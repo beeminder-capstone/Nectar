@@ -21,8 +21,6 @@ class FacebookAdapter < BaseAdapter
   end
 
 
-  #client is still jacked up, I think oath_access_token is set wrong
-  # need to set provider key/id?
   def client
     @client = Koala::Facebook::API.new(access_token)
   end
