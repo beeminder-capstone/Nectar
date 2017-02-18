@@ -13,7 +13,7 @@ class YoutubeAdapter < BaseAdapter
     end
 
     def title
-      "Youtube"
+      "YouTube"
     end
   end
 end
