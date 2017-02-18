@@ -18,9 +18,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            Rails.application.secrets.google_provider_secret,
            scope: %w[
              email
-             fitness.fitness.activity.read
-             fitness.fitness.blood_glucose.read
-             fitness.fitness.blood_pressure.read
+             fitness.activity.read
+             fitness.blood_glucose.read
+             fitness.blood_pressure.read
              fitness.body.read
              fitness.body_temperature.read
 			 fitness.nutrition.read
@@ -104,7 +104,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 			 plus.profiles.read
 			 plus.circles.read
            ].join(","),
-           name: "google+",
+           name: "googleplus",
            prompt: "consent"
   
   provider :google_oauth2,

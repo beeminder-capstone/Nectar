@@ -41,7 +41,7 @@ Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_st
 * Twitter
 * Typeracer
 * Wunderlist
-* Youtube
+* YouTube
 
 Most of these integrations do not yet have metrics to track.
 
