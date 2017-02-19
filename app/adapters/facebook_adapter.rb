@@ -45,6 +45,11 @@ class FacebookAdapter < BaseAdapter
     sum
   end
 
+  def blah
+    1
+
+  end
+
   def create_post
     #Test message to see if this works
     client.put_connections("me", "feed", message: "hi all")
