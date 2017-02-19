@@ -1,4 +1,4 @@
-class DropboxAdapter < BaseAdapter
+class DropboxOauth2Adapter < BaseAdapter
   class << self
     def required_keys
       %i(token)

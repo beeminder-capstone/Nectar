@@ -1,4 +1,4 @@
-class KhanacademyAdapter < BaseAdapter
+class MicrosoftOffice365Adapter < BaseAdapter
   class << self
     def required_keys
       %i(token)
@@ -9,11 +9,11 @@ class KhanacademyAdapter < BaseAdapter
     end
 
     def website_link
-      "https://www.khanacademy.org/"
+      "https://products.office.com/en-US/"
     end
 
     def title
-      "KhanAcademy"
+      "Microsoft Office365"
     end
   end
 end
