@@ -26,7 +26,6 @@ class FacebookAdapter < BaseAdapter
   end
 
   def fetch_wall()
-    puts 'before user'
     client.get_connection('me', 'feed', fields: %w(id from created_time))
   end
 
@@ -39,13 +38,11 @@ class FacebookAdapter < BaseAdapter
   #returns posts created by the user
   def fetch_my_days_posts()
     wall = fetch_wall
-
+    sum = 0
     wall.each do |post|
-      puts 'print post from'
-      puts post.from
-      post.from === fetch_me
-    end.count()
-
+       sum += (post.from === fetch_me && !(DateTime.jisx0301(post.created_time) < Date.today)) ? 1 : 0
+    end
+    sum
   end
 
   def create_post
