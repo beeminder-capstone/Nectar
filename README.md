@@ -83,6 +83,10 @@ The following instructions will enable you to download and compile the source in
 
 2.    Install Ruby: https://www.ruby-lang.org/en/documentation/installation/
     1.    Requires version 2.3.3 or greater (because of this: https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby).
+    2.    Note: If you are using Windows, we would highly recommend you use Bash on Windows 10 (https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then follow the Linux instructions. If you install on windows, use the RailsInstaller to install both Ruby and Rails: http://railsinstaller.org/en. Here are some links to help solve some of the problems you may encounter:
+        1.    http://stackoverflow.com/a/35730896
+        2.    http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/
+        3.    https://web.archive.org/web/20150520184140/http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-
 3.    Install Rails: http://guides.rubyonrails.org/getting_started.html#installing-rails
     1.    Requires version 5.0.0.1 or greater.
 4.    Install PostgreSQL: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
@@ -95,7 +99,7 @@ The following instructions will enable you to download and compile the source in
 8.    Run: `bundle install`. (On Windows or Mac follow the instructions on the top of this file to install the pg gem: https://github.com/beeminder-capstone/Nectar-Backend/blob/master/config/database.yml.)
 9.    Run: `rake db:migrate`.
 10.    Start the server: `bin/rails server` (on Windows: `ruby bin\rails server`).
-11.    Go to: http://localhost:3000/.
+11.    Go to: [http://localhost:3000/].
 
 ##Contributing
 To contribute, simply fork and then create a pull request. 

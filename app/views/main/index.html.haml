@@ -6,9 +6,11 @@
 .row
   - if current_user && current_user.goals.count > 0
     = render "my_goals"
-- unless current_user
-  .row-fluid
-    %p
+.row-fluid
+  %p
+    - if current_user
+      Welcome, #{current_user.beeminder_user_id}!
+    - else
       Please,
       =link_to "Log in", signin_path
       with your Beeminder account.

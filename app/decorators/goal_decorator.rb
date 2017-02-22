@@ -35,10 +35,17 @@ class GoalDecorator < DelegateClass(Goal)
   end
 
   def metric_link
-    title = [provider.title, metric.title].join(" - ")
+    title = metric.title
     link_to title,
             ProviderDecorator.new(provider).metric_path(metric),
-            title: "Click to configure"
+            title: "Click to configure goal"
+  end
+  
+  def provider_link
+    title = provider.title
+    link_to title,
+            ProviderDecorator.new(provider).credential_link,
+            title: "Click to configure provider"
   end
 
   private
