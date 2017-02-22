@@ -2,6 +2,9 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862)
 
 # Nectar Backend
+---
+Copyright (c) 2017 The Beeminder Capstone Team
+
 Backend for Nectar app
 
 Nectar adds support for more integrations on [Beeminder](https://www.beeminder.com/). Automatically gets data from supported integrations and adds it to Beeminder goals.
