@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/beeminder-capstone/Nectar-Backend.svg?branch=master)](https://travis-ci.org/beeminder-capstone/Nectar-Backend)
-[![Dependency Status](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862)
+[![Dependency Status](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862)
+
 # Nectar Backend
 Backend for Nectar app
 
@@ -9,7 +10,33 @@ This is a work in progress. Available for testing at: [https://beemindernectar.h
 
 Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_started.html) 5.0.0.1 or greater and [PostgreSQL](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup) 9.1 or greater. Must set all environment variables listed in: `.env.local`.
 
-##Supported integrations
+
+---
+
+### Table of Contents
+ - [Idea](#Idea)
+ - [Usage](#usage)
+ - [Supported Integrations](#Supported Integrations)
+ - [Build](#build)
+ - [Contributing](#contributing)
+ - [License](#license)
+ 
+---
+
+
+##Idea
+The idea the Nectar Backend is to provide a server for the Nectar Mobile app, that integrates naturally with the Beeminder website.
+
+##Usage
+This app allows the user to do the following things for their beeminder account
+
+ * View a Goal
+ * Add integration to a goal
+ 
+
+##Supported Integrations
+The following integrations are supported by the Nectar Backend:
+
 * Beeminder
 * Austin Bcycle
 * Bitbucket
@@ -45,5 +72,42 @@ Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_st
 * YouTube
 
 Most of these integrations do not yet have metrics to track.
+
+
+##Build
+The following instructions will enable you to download and compile the source into a working server.
+
+
+2.    Install Ruby: https://www.ruby-lang.org/en/documentation/installation/
+    1.    Requires version 2.3.3 or greater (because of this: https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby).
+    2.    Note: If you are using Windows, I would highly recommend you use Bash on Windows 10 (https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then follow the Linux instructions. If you have an earlier version of Windows, you can get Windows 10 free from CAT (https://intranet.cecs.pdx.edu/dreamspark/). I was able to install natively on Windows, but only after spending days solving multiple problems. If you must install on windows, use the RailsInstaller to install both Ruby and Rails: http://railsinstaller.org/en. Here are links to help solve some of the problems I encountered:
+        1.    http://stackoverflow.com/a/35730896
+        2.    http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/
+        3.    https://web.archive.org/web/20150520184140/http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-
+3.    Install Rails: http://guides.rubyonrails.org/getting_started.html#installing-rails
+    1.    Requires version 5.0.0.1 or greater.
+4.    Install PostgreSQL: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+    1.    Requires version 9.1 or greater.
+5.    Setup PostgreSQL by opening the GUI. Create the "nectar_development" database.
+6.    Download the files: https://github.com/beeminder-capstone/Nectar-Backend and CD into the directory.
+7.    Set all environment variables listed in: `.env.local`.
+    1.    The top three from the bottom are required.
+    2.    Get the `SECRET_KEY_BASE` by running: `rake secret`.
+8.    Run: `bundle install`. (On Windows or Mac follow the instructions on the top of this file to install the pg gem: https://github.com/beeminder-capstone/Nectar-Backend/blob/master/config/database.yml.)
+9.    Run: `rake db:migrate`.
+10.    Start the server: `bin/rails server` (on Windows: `ruby bin\rails server`).
+11.    Go to: http://localhost:3000/.
+
+
+
+
+
+##Contributing
+To contribute, simply fork and then create a pull request. 
+
+##License
+#####Copyright (c) 2017 The Beeminder Capstone Team
+This code is available under the "MIT License".
+Please see the file LICENSE in this distribution for license terms.
 
 Adapted from [Gal Tsubery's](https://github.com/tsubery/) [Quantifier](https://github.com/tsubery/quantifier/).
