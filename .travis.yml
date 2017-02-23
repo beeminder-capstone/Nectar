@@ -1,14 +1,23 @@
 language: ruby
+notifications:
+  email:
+    on_success: never
+    on_failure: always
 rvm:
  - "2.3.3"
 services:
   - postgresql
 cache: bundler
 env: 
-  - RAILS_ENV=test
+  - RAILS_ENV=development
+
+before_script:
+  - sudo apt-get install ruby-dev
+  - psql -c 'create database nectar_development;' -U postgres
+  - export SECRET_KEY_BASE="$(bundle exec rake secret)"
 script: 
-  - bundle exec rake db:create
-  - bundle exec rake db:reset
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
   - bundle exec rake spec
 addons:
   postgresql: "9.4"
