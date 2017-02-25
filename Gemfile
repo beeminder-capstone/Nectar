@@ -43,7 +43,7 @@ gem 'whenever', require: false
 gem 'google-api-client' #, "0.9"
 
 # The following line avoids deprecation warning when google-api-client is used
-gem 'representable', '2.3.0'
+gem 'representable'#, '2.3.0'
 
 gem 'pocket-ruby'
 gem 'quizlet-ruby'

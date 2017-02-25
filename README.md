@@ -66,11 +66,14 @@ The following integrations are supported by the Nectar Backend:
 * Remember The Milk
 * RunKeeper
 * Slack
+* Stack Overflow
 * Strava
 * Trello
 * Tumblr
 * Twitter
 * Typeracer
+* Wikipedia
+* World Community Grid
 * Wunderlist
 * YouTube
 

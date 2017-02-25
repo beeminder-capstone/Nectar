@@ -3,9 +3,6 @@
 
 .row
   = render "welcome"
-.row
-  - if current_user && current_user.goals.count > 0
-    = render "my_goals"
 .row-fluid
   %p
     - if current_user
@@ -14,6 +11,9 @@
       Please,
       =link_to "Log in", signin_path
       with your Beeminder account.
+.row
+  - if current_user && current_user.goals.count > 0
+    = render "my_goals"
 .row-fluid#main_metrics
   = render "metrics"
 
