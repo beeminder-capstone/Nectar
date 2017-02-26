@@ -3,7 +3,7 @@
 
 # Nectar Backend
 ---
-Copyright (c) 2017 The Beeminder Capstone Team
+Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
 Backend for Nectar app
 
@@ -28,10 +28,10 @@ Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_st
 
 
 ##Idea
-The idea the Nectar Backend is to provide a server for the Nectar Mobile app, that integrates naturally with the Beeminder website.
+The idea behind the Nectar Backend is to provide a server for the Nectar Frontend Mobile app, that integrates naturally with the Beeminder website.
 
 ##Usage
-This app allows the user to do the following things for their beeminder account
+This app allows the user to do the following things for their Beeminder account
 
  * View a Goal
  * Add integration to a goal
@@ -81,34 +81,34 @@ Most of these integrations do not yet have metrics to track.
 
 
 ##Build
-The following instructions will enable you to download and compile the source into a working server.
+The following instructions will enable you to download and compile the source into a working server:
 
 
-2.    Install Ruby: https://www.ruby-lang.org/en/documentation/installation/
-    1.    Requires version 2.3.3 or greater (because of this: https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby).
-    2.    Note: If you are using Windows, we would highly recommend you use Bash on Windows 10 (https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then follow the Linux instructions. If you install on windows, use the RailsInstaller to install both Ruby and Rails: http://railsinstaller.org/en. Here are some links to help solve some of the problems you may encounter:
-        1.    http://stackoverflow.com/a/35730896
-        2.    http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/
-        3.    https://web.archive.org/web/20150520184140/http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-
+2.    Install Ruby: [https://www.ruby-lang.org/en/documentation/installation/](https://www.ruby-lang.org/en/documentation/installation/)
+    1.    Requires version 2.3.3 or greater (because of this: [https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby](https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby)).
+    2.    Note: If you are using Windows, we would highly recommend you use Bash on Windows 10 ([https://msdn.microsoft.com/en-us/commandline/wsl/install_guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)) and then follow the Linux instructions. If you install on windows, use the RailsInstaller to install both Ruby and Rails: [http://railsinstaller.org/en](http://railsinstaller.org/en). Here are some links to help solve some of the problems you may encounter:
+        1.    [http://stackoverflow.com/a/35730896](http://stackoverflow.com/a/35730896)
+        2.    [http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/](http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/)
+        3.    [http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-](https://web.archive.org/web/20150520184140/http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-)
 3.    Install Rails: http://guides.rubyonrails.org/getting_started.html#installing-rails
     1.    Requires version 5.0.0.1 or greater.
-4.    Install PostgreSQL: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+4.    Install PostgreSQL: [https://devcenter.heroku.com/articles/heroku-postgresql#local-setup](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup)
     1.    Requires version 9.1 or greater.
 5.    Setup PostgreSQL by opening the GUI. Create the "nectar_development" database.
-6.    Download the files: https://github.com/beeminder-capstone/Nectar-Backend and CD into the directory.
+6.    Download the files: [https://github.com/beeminder-capstone/Nectar-Backend](https://github.com/beeminder-capstone/Nectar-Backend) and CD into the directory.
 7.    Set all environment variables listed in: `.env.local`.
     1.    The top three from the bottom are required.
     2.    Get the `SECRET_KEY_BASE` by running: `rake secret`.
-8.    Run: `bundle install`. (On Windows or Mac follow the instructions on the top of this file to install the pg gem: https://github.com/beeminder-capstone/Nectar-Backend/blob/master/config/database.yml.)
+8.    Run: `bundle install`. (On Windows or Mac follow the instructions on the top of this file to install the pg gem: [config/database.yml](config/database.yml).)
 9.    Run: `rake db:migrate`.
 10.    Start the server: `bin/rails server` (on Windows: `ruby bin\rails server`).
-11.    Go to: [http://localhost:3000/].
+11.    Go to: [http://localhost:3000/](http://localhost:3000/).
 
 ##Contributing
 To contribute, simply fork and then create a pull request. 
 
 ##License
-#####Copyright (c) 2017 The Beeminder Capstone Team
+#####Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 This code is available under the "MIT License".
 Please see the file LICENSE in this distribution for license terms.
 
