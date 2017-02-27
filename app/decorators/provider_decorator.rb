@@ -15,7 +15,7 @@ class ProviderDecorator < DelegateClass(Provider)
 
   def credential_link
     if credential?
-      routes.edit_credential_path(credential)
+	  "/credentials/#{name}"
     else
       routes.new_credential_path(provider_name: name)
     end

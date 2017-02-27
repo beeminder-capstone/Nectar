@@ -28,5 +28,19 @@ Rails.application.routes.draw do
     end
   end
   resources :credentials,
-    except: %(index show)
+    except: %(index show),
+	constraints: { id: /\d+/} do
+
+    collection do
+      provider_exists = lambda do |request|
+        name = request[:provider_name]
+        PROVIDERS[name]
+      end
+
+      get ':provider_name',
+        constraints: provider_exists,
+        action: :edit,
+        as: :edit
+    end
+  end
 end

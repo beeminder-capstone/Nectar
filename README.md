@@ -2,7 +2,7 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862/badge.svg?style=flat)](https://www.versioneye.com/user/projects/58acea064ca76f0047de1862)
 
 # Nectar Backend
----
+
 Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
 Backend for Nectar app
