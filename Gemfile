@@ -143,6 +143,9 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'active_hash_relation'
+gem 'active_model_serializers'
+
 ruby '2.3.3'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

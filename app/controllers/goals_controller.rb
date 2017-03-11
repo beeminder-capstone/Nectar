@@ -50,12 +50,12 @@ class GoalsController < AuthenticatedController
 
   def destroy
     goal.destroy!
-    redirect_to root_path, notice: "Goal deleted successfully for #{provider.name}."
+    redirect_to root_path, notice: "Goal deleted successfully ."
   end
 
   def reload
     BeeminderWorker.new.perform(beeminder_user_id: current_user.beeminder_user_id)
-    redirect_to root_path, notice: "Scores updated for #{provider.name}."
+    redirect_to root_path, notice: "Scores updated."
   end
 
   private
