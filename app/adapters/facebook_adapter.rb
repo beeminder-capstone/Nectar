@@ -40,7 +40,7 @@ class FacebookAdapter < BaseAdapter
     wall = fetch_wall
     sum = 0
     wall.each do |post|
-       sum += (post.from === fetch_me && !(DateTime.jisx0301(post.created_time) < Date.today)) ? 1 : 0
+       sum += (post.from === fetch_me && (DateTime.jisx0301(post.created_time) > Date.today)) ? 1 : 0
     end
     sum
   end
