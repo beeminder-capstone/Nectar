@@ -1,3 +1,9 @@
+=begin
+ * Created by PSU Beeminder Capstone Team on 3/12/2017.
+ * Copyright (c) 2017 PSU Beeminder Capstone Team
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms.
+=end
 PROVIDERS.fetch(:pocket).register_metric :article_days_linear do |metric|
   metric.description = "The sum of days since each article has been added"
   metric.title = "Article backlog"

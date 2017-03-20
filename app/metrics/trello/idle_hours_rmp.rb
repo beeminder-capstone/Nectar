@@ -1,3 +1,9 @@
+=begin
+ * Created by PSU Beeminder Capstone Team on 3/12/2017.
+ * Copyright (c) 2017 PSU Beeminder Capstone Team
+ * This code is available under the "MIT License".
+ * Please see the file LICENSE in this distribution for license terms.
+=end
 PROVIDERS.fetch(:trello).register_metric :idle_hours_rmp do |metric|
   metric.description = 'The root mean power of the ages of the cards measured in hours.
   Power of 2 is the same as calculating the "Root Mean Square" of the ages.'
