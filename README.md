@@ -3,7 +3,7 @@
 
 # Nectar Backend
 
-Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
+Copyright Â© 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
 Backend for Nectar app
 
@@ -27,17 +27,17 @@ Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_st
 ---
 
 
-##Idea
+## Idea
 The idea behind the Nectar Backend is to provide a server for the Nectar Frontend Mobile app, that integrates naturally with the Beeminder website.
 
-##Usage
+## Usage
 This app allows the user to do the following things for their Beeminder account
 
  * View a Goal
  * Add integration to a goal
  
 
-##Supported Integrations
+## Supported Integrations
 The following integrations are supported by the Nectar Backend:
 
 * Beeminder
@@ -80,7 +80,7 @@ The following integrations are supported by the Nectar Backend:
 Most of these integrations do not yet have metrics to track.
 
 
-##Build
+## Build
 The following instructions will enable you to download and compile the source into a working server:
 
 
@@ -104,11 +104,11 @@ The following instructions will enable you to download and compile the source in
 10.    Start the server: `bin/rails server` (on Windows: `ruby bin\rails server`).
 11.    Go to: [http://localhost:3000/](http://localhost:3000/).
 
-##Contributing
+## Contributing
 To contribute, simply fork and then create a pull request. 
 
-##License
-#####Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
+## License
+##### Copyright Â© 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 This code is available under the "MIT License".
 Please see the file LICENSE in this distribution for license terms.
 
