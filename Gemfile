@@ -85,7 +85,7 @@ gem 'omniauth-trello'
 
 gem 'omniauth-bitbucket'
 gem 'omniauth-dropbox-oauth2'
-gem 'evernote_oauth'
+gem 'omniauth-evernote'
 gem 'omniauth-facebook'
 gem 'omniauth-fitbit'
 gem 'omniauth-flickr'

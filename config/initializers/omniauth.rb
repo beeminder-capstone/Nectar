@@ -44,13 +44,14 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 		   
   provider :bitbucket, Rails.application.secrets.bitbucket_provider_key, Rails.application.secrets.bitbucket_provider_secret
   provider :dropbox_oauth2, Rails.application.secrets.dropbox_provider_key, Rails.application.secrets.dropbox_provider_secret
+  provider :evernote, Rails.application.secrets.evernote_provider_key, Rails.application.secrets.evernote_provider_secret
   provider :facebook, Rails.application.secrets.facebook_provider_key, Rails.application.secrets.facebook_provider_secret
   provider :fitbit, Rails.application.secrets.fitbit_provider_key, Rails.application.secrets.fitbit_provider_secret, scope: "activity profile"
   provider :flickr, Rails.application.secrets.flickr_provider_key, Rails.application.secrets.flickr_provider_secret, scope: 'read'
   provider :github, Rails.application.secrets.github_provider_key, Rails.application.secrets.github_provider_secret, scope: "user,repo,gist"
   provider :instagram, Rails.application.secrets.instagram_provider_key, Rails.application.secrets.instagram_provider_secret
   provider :khan_academy, Rails.application.secrets.khan_academy_provider_key, Rails.application.secrets.khan_academy_provider_secret
-  provider :linkedin, Rails.application.secrets.linkedin_provider_key, Rails.application.secrets.linkedin_provider_secret, :scope => 'r_fullprofile r_emailaddress r_network'
+  provider :linkedin, Rails.application.secrets.linkedin_provider_key, Rails.application.secrets.linkedin_provider_secret, :scope => 'r_basicprofile r_emailaddress'
   provider :microsoft_office365, Rails.application.secrets.microsoft_office365_provider_key, Rails.application.secrets.microsoft_office365_provider_secret
   provider :moves, Rails.application.secrets.moves_provider_key, Rails.application.secrets.moves_provider_secret
   provider :rtm, Rails.application.secrets.rtm_provider_key, Rails.application.secrets.rtm_provider_secret
