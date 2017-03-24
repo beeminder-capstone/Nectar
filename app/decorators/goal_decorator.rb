@@ -50,7 +50,7 @@ class GoalDecorator < DelegateClass(Goal)
   def provider_link
     title = provider.title
     link_to title,
-            ProviderDecorator.new(provider).credential_link,
+            "/credentials/#{provider.name}",
             title: "Click to configure provider"
   end
 

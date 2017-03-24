@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to '&#x1F41D; Nectar'.html_safe, root_path, class: 'navbar-brand'
+      = link_to image_tag("Nectar Logo/nectar.svg", border: "0", class: "icon", width: "25px") + ' Nectar', root_path, class: 'navbar-brand'
     .navbar-collapse.collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

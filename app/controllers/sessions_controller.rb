@@ -19,7 +19,11 @@ class SessionsController < ApplicationController
     else
       flash = "Please log in with your Beeminder account first."
     end
-    redirect_to "/credentials/#{credential.provider.name}", notice: flash
+    if credential.provider.name == :beeminder
+	  redirect_to root_url, notice: flash
+	else
+      redirect_to "/credentials/#{credential.provider.name}", notice: flash
+	end
   end
 
   def destroy
