@@ -39,7 +39,7 @@ class CredentialsController < AuthenticatedController
     unless credential.update_attributes credential_params
       flash[:error] = credential.errors.full_messages.join(" ")
     end
-    redirect_to root_path
+    redirect_to "/credentials/#{provider.name}", notice: "Configured successfully!"
   end
 
   def destroy
