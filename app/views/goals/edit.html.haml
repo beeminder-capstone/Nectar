@@ -83,7 +83,7 @@
           = f.check_box :active
           = f.label :active, "Enabled"
         = f.fields_for :params do |pf|
-          - extra_configuration = self.instance_exec(credential.client, f.object.params, pf, &metric.configuration)
+          - extra_configuration = self.instance_exec(credential.client, f.object.params, pf, &metric.configuration) rescue []
           - extra_configuration.each do |(label, input)|
             .form-group
               = pf.label label
@@ -92,18 +92,16 @@
           - if lookup_context.template_exists?(template_name, [], true)
             = render template_name, pf: pf, params: f.object.params
         = f.submit "Save", class: %i(btn btn-default)
-    .col-lg-1
-    - if goal.persisted?
-      .col-lg-4
-        %h3 Last Datapoint
-        %table.table.table-responsive#current-score
-          %thead
+    .col-lg-4
+      %h3 Last Datapoint
+      %table.table.table-responsive#current-score
+        %thead
+          %tr
+            %td Timestamp
+            %td Value
+        %tbody
+          - goal.safe_fetch_scores.each do |datapoint|
             %tr
-              %td Timestamp
-              %td Value
-          %tbody
-            - goal.safe_fetch_scores.each do |datapoint|
-              %tr
-                %td= datapoint.timestamp || "Now"
-                %td= datapoint.value
+              %td= datapoint.timestamp || "Now"
+              %td= datapoint.value
 
