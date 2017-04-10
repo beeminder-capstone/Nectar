@@ -5,11 +5,24 @@
 
 Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
+Maintained by: [Teal Dulcet](https://github.com/tdulcet)
+
+Made by:
+* [Rachael Johnson](https://github.com/rhatchet)
+* [Kevin Bui](https://github.com/kevbui)
+* Teal Dulcet
+* [Nathan Axt](https://github.com/naxt25)
+* [Tim Sweeney](https://github.com/sweeney6)
+* [Nida Imran](https://github.com/nidaimran)
+* [Tuan Lam](https://github.com/t-lam)
+
+Adapted from [Gal Tsubery's](https://github.com/tsubery/) [Quantifier](https://github.com/tsubery/quantifier/).
+
 Backend for Nectar app
 
 Nectar adds support for more integrations on [Beeminder](https://www.beeminder.com/). Automatically gets data from supported integrations and adds it to Beeminder goals.
 
-This is a work in progress. Available for testing at: [https://beemindernectar.herokuapp.com/](https://beemindernectar.herokuapp.com/).
+Available for testing at: [https://beemindernectar.herokuapp.com/](https://beemindernectar.herokuapp.com/).
 
 Requires Ruby 2.3.3 or greater, [Rails](http://guides.rubyonrails.org/getting_started.html) 5.0.0.1 or greater and [PostgreSQL](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup) 9.1 or greater. Must set all environment variables listed in: `.env.local`.
 
