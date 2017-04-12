@@ -57,4 +57,6 @@ Rails.application.routes.draw do
         as: :edit
     end
   end
+  
+  post 'callback/reload_goal', controller: :callback, action: :reload_slug
 end

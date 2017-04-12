@@ -7,8 +7,8 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %meta{:content => "PSU CS Capstone", :name => "author"}
     %title= content_for?(:title) ? yield(:title) : 'Nectar'
-    %link{:href => "favicon.ico", :rel => "shortcut icon"}/
-    %link{:href => "apple-touch-icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Nectar adds support for more integrations on Beeminder'}"}
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'

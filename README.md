@@ -3,6 +3,8 @@
 
 # Nectar Backend
 
+Backend for Nectar app
+
 Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
 Maintained by: [Teal Dulcet](https://github.com/tdulcet)
@@ -17,8 +19,6 @@ Made by:
 * [Tuan Lam](https://github.com/t-lam)
 
 Adapted from [Gal Tsubery's](https://github.com/tsubery/) [Quantifier](https://github.com/tsubery/quantifier/).
-
-Backend for Nectar app
 
 Nectar adds support for more integrations on [Beeminder](https://www.beeminder.com/). Automatically gets data from supported integrations and adds it to Beeminder goals.
 
@@ -124,5 +124,3 @@ To contribute, simply fork and then create a pull request.
 ##### Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 This code is available under the "MIT License".
 Please see the file LICENSE in this distribution for license terms.
-
-Adapted from [Gal Tsubery's](https://github.com/tsubery/) [Quantifier](https://github.com/tsubery/quantifier/).
