@@ -37,6 +37,22 @@ class Api::V1::GoalsController < Api::V1::BaseController
 	end
   end
   
+  def destroy
+    user = User.find_by beeminder_user_id: params[:username]
+	
+	if user
+	  goal = user.goals.find(params[:id])
+
+      if !goal.destroy
+       return api_error(status: 500)
+      end
+
+      head status: 204
+	else
+	  unauthenticated!
+	end
+  end
+  
   private
   def goal_params
     slug_keys = params.dig("goal", "params", "source_slugs")&.keys

@@ -51,7 +51,7 @@ This app allows the user to do the following things for their Beeminder account
  
 
 ## Supported Integrations
-The following integrations are supported by the Nectar Backend:
+The Nectar Backend supports the following integrations:
 
 * Beeminder
 * Austin Bcycle
@@ -99,7 +99,7 @@ The following instructions will enable you to download and compile the source in
 
 1. Install Ruby: [https://www.ruby-lang.org/en/documentation/installation/](https://www.ruby-lang.org/en/documentation/installation/)
     1. Requires version 2.3.3 or greater (because of this: [https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby](https://en.wikipedia.org/wiki/Safe_navigation_operator#Ruby)).
-    2. Note: If you are using Windows, we would highly recommend you use Bash on Windows 10 ([https://msdn.microsoft.com/en-us/commandline/wsl/install_guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)) and then follow the Linux instructions. If you install on windows, use the RailsInstaller to install both Ruby and Rails: [http://railsinstaller.org/en](http://railsinstaller.org/en). Here are some links to help solve some of the problems you may encounter:
+    2. Note: If you are using Windows, we highly recommend you use Bash on Windows 10 ([https://msdn.microsoft.com/en-us/commandline/wsl/install_guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)) and then follow the Linux instructions. If you install on windows, use the RailsInstaller to install both Ruby and Rails: [http://railsinstaller.org/en](http://railsinstaller.org/en). Here are some links to help solve some of the problems you may encounter:
         1. [http://stackoverflow.com/a/35730896](http://stackoverflow.com/a/35730896)
         2. [http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/](http://blog.cloud-mes.com/2014/08/19/how-to-install-gem-curb-in-windows/)
         3. [http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-](https://web.archive.org/web/20150520184140/http://curl.haxx.se/dlwiz/?type=lib&os=Win32&flav=-)
@@ -108,11 +108,11 @@ The following instructions will enable you to download and compile the source in
 3. Install PostgreSQL: [https://devcenter.heroku.com/articles/heroku-postgresql#local-setup](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup)
     1. Requires version 9.1 or greater.
 4. Setup PostgreSQL by opening the GUI. Create the "nectar_development" database.
-5. Download the files: [https://github.com/beeminder-capstone/Nectar-Backend](https://github.com/beeminder-capstone/Nectar-Backend) and CD into the directory.
+5. Clone or Download the files: [https://github.com/beeminder-capstone/Nectar-Backend](https://github.com/beeminder-capstone/Nectar-Backend) and CD into the directory.
 6. Set all environment variables listed in: `.env.local`.
     1. The top three from the bottom are required.
     2. Get the `SECRET_KEY_BASE` by running: `rake secret`.
-7. Run: `bundle install`. (On Windows or Mac follow the instructions on the top of this file to install the pg gem: [config/database.yml](config/database.yml).)
+7. Run: `bundle install`. (On Windows or Mac, follow the instructions on the top of this file to install the pg gem: [config/database.yml](config/database.yml).)
 8. Run: `rake db:migrate`.
 9. Start the server: `bin/rails server` (on Windows: `ruby bin\rails server`).
 10. Go to: [http://localhost:3000/](http://localhost:3000/).

@@ -30,7 +30,9 @@ class BeeminderWorker
   private
 
   def safe_sync(goal)
-    goal.sync
+    Timeout::timeout(90) {
+      goal.sync
+    }
   rescue => e
     Rollbar.error(e, goal_id: goal.id)
     logger.error e.backtrace
