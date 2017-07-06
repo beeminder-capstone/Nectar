@@ -28,7 +28,8 @@ class Credential < ActiveRecord::Base
   def client
     authorization = credentials.merge(
       uid: uid,
-      password: password
+      password: password,
+      verification_code: verification_code
     ).with_indifferent_access
     provider.adapter.new(authorization)
   end

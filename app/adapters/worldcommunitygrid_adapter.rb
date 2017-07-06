@@ -29,25 +29,44 @@ class WorldcommunitygridAdapter < BaseAdapter
   def runtime
     uid = credentials.fetch(:uid)
 	verification_code = credentials.fetch(:verification_code)
-    doc = Nokogiri::HTML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
+    doc = Nokogiri::XML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
 
-	doc.xpath('//MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//RunTime')&.first
+	member_stats = doc.xpath('MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//RunTime')
+    if member_stats
+      member_stats.first.text.to_s
+    else
+      raise "Can't fetch run time"
+    end
   end
   
   def points
     uid = credentials.fetch(:uid)
 	verification_code = credentials.fetch(:verification_code)
-    doc = Nokogiri::HTML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
+    doc = Nokogiri::XML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
 
-	doc.xpath('//MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//Points')&.first
+	member_stats = doc.xpath('MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//Points')
+	if member_stats
+      member_stats.first.text.to_s
+    else
+      raise "Can't fetch points"
+    end
   end
   
   def results
     uid = credentials.fetch(:uid)
 	verification_code = credentials.fetch(:verification_code)
-    doc = Nokogiri::HTML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
+    doc = Nokogiri::XML(open("https://www.worldcommunitygrid.org/verifyMember.do?name=#{uid}&code=#{verification_code}"))
 
-	doc.xpath('//MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//Results')&.first
+	member_stats = doc.xpath('MemberStatsWithTeamHistory//MemberStats//MemberStat//StatisticsTotals//Results')
+	if member_stats
+      member_stats.first.text.to_s
+    else
+      raise "Can't fetch results"
+    end
+  end
+  
+  def verification_code
+    credentials.fetch :verification_code
   end
 
 end

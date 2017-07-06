@@ -45,7 +45,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :bitbucket, Rails.application.secrets.bitbucket_provider_key, Rails.application.secrets.bitbucket_provider_secret
   provider :dropbox_oauth2, Rails.application.secrets.dropbox_provider_key, Rails.application.secrets.dropbox_provider_secret
   provider :evernote, Rails.application.secrets.evernote_provider_key, Rails.application.secrets.evernote_provider_secret
-  provider :facebook, Rails.application.secrets.facebook_provider_key, Rails.application.secrets.facebook_provider_secret
+  provider :facebook, Rails.application.secrets.facebook_provider_key, Rails.application.secrets.facebook_provider_secret, scope: 'public_profile,user_friends,user_likes,user_posts'
   provider :fitbit, Rails.application.secrets.fitbit_provider_key, Rails.application.secrets.fitbit_provider_secret, scope: "activity profile"
   provider :flickr, Rails.application.secrets.flickr_provider_key, Rails.application.secrets.flickr_provider_secret, scope: 'read'
   provider :github, Rails.application.secrets.github_provider_key, Rails.application.secrets.github_provider_secret, scope: "user,repo,gist"

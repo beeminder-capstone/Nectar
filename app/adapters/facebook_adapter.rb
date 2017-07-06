@@ -32,29 +32,43 @@ class FacebookAdapter < BaseAdapter
     @client = Koala::Facebook::API.new(access_token)
   end
 
-  def fetch_wall()
-    client.get_connection('me', 'feed', fields: %w(id from created_time))
-  end
-
-
-  def fetch_me
-    client.get_object("me")
-  end
-
 
   #returns posts created by the user
-  def fetch_my_days_posts()
-    wall = fetch_wall
+  def fetch_posts()
+    #wall = client.get_connection('me', 'posts', fields: %w(id from))
+    wall = client.get_connection('me', 'posts', fields: %w(id))
+	#me = client.get_object("me")
     sum = 0
-    wall.each do |post|
-       sum += (post.from === fetch_me && (DateTime.jisx0301(post.created_time) > Date.today)) ? 1 : 0
-    end
+	while wall.to_a.any? do
+      wall.each do |post|
+        #sum += (post.from === me) ? 1 : 0
+		sum += wall.count
+      end
+	  wall = wall.next_page
+	end
     sum
   end
-
-  def create_post
-    #Test message to see if this works
-    client.put_connections("me", "feed", message: "hi all")
+  
+  def fetch_likes()
+    wall = client.get_connection('me', 'likes', fields: %w(id))
+    sum = 0
+	while wall.to_a.any? do
+      sum += wall.count
+      
+	  wall = wall.next_page
+	end
+	
+	wall = client.get_connection('me', 'og.likes', fields: %w(id))
+	while wall.to_a.any? do
+      sum += wall.count
+      
+	  wall = wall.next_page
+	end
+    sum
+  end
+  
+  def fetch_friends()
+    wall = client.get_connection('me', 'friends').raw_response["summary"]["total_count"]
   end
 
 end
