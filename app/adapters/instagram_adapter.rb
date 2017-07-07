@@ -1,3 +1,5 @@
+require "instagram"
+
 =begin
  * Created by PSU Beeminder Capstone Team on 3/12/2017.
  * Copyright (c) 2017 PSU Beeminder Capstone Team
@@ -21,5 +23,19 @@ class InstagramAdapter < BaseAdapter
     def title
       "Instagram"
     end
+  end
+  
+  def client
+    client = Instagram.client(:access_token => access_token)
+  end
+  
+  def fetch_media
+    user = client.user
+	sum = user.counts.media
+  end
+  
+  def fetch_follows
+    user = client.user
+	sum = user.counts.follows
   end
 end

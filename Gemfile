@@ -58,7 +58,7 @@ gem 'koala'
 #gem "ruby-fitbit"
 #gem "flickraw"
 #gem "github_api"
-#gem "instagram"
+gem "instagram"
 #gem "rubykhan"
 #gem "linkedin"
 #gem "rdingwell-ruby-healthvault"
