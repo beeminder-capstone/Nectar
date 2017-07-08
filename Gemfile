@@ -70,7 +70,7 @@ gem "instagram"
 #gem "strava-api-v3"
 #gem "toodledo"
 #gem "tumblr_client"
-#gem "twitter", ">= 5.17.0"
+gem "twitter", ">= 5.17.0"
 #gem "wakatime"
 #gem "wunderlist-api"
 

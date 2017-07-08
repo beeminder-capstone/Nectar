@@ -1,3 +1,5 @@
+require "twitter"
+
 =begin
  * Created by PSU Beeminder Capstone Team on 3/12/2017.
  * Copyright (c) 2017 PSU Beeminder Capstone Team
@@ -21,5 +23,26 @@ class TwitterAdapter < BaseAdapter
     def title
       "Twitter"
     end
+  end
+  
+  def client
+	client = Twitter::REST::Client.new do |config|
+	  config.consumer_key        = Rails.application.secrets.twitter_provider_key
+	  config.consumer_secret     = Rails.application.secrets.twitter_provider_secret
+	  config.access_token        = access_token
+	  config.access_token_secret = access_secret
+	end
+  end
+  
+  def fetch_likes
+    client.user.favourites_count
+  end
+  
+  def fetch_friends
+    client.user.friends_count
+  end
+  
+  def fetch_statuses
+    client.user.statuses_count
   end
 end
