@@ -56,7 +56,7 @@ gem 'my_bcycle'
 #gem "evernote-thrift"
 gem 'koala'
 #gem "ruby-fitbit"
-#gem "flickraw"
+gem "flickraw"
 #gem "github_api"
 gem "instagram"
 #gem "rubykhan"

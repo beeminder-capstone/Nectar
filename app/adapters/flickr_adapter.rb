@@ -1,3 +1,5 @@
+require 'flickraw'
+
 =begin
  * Created by PSU Beeminder Capstone Team on 3/12/2017.
  * Copyright (c) 2017 PSU Beeminder Capstone Team
@@ -21,5 +23,22 @@ class FlickrAdapter < BaseAdapter
     def title
       "Flickr"
     end
+  end
+  
+  def client
+    FlickRaw.api_key = Rails.application.secrets.flickr_provider_key
+	FlickRaw.shared_secret = Rails.application.secrets.flickr_provider_secret
+	
+	flickr = FlickRaw::Flickr.new
+	flickr.access_token = access_token
+	flickr.access_secret = access_secret
+	
+	flickr
+  end
+  
+  def fetch_photos
+    flickr = client
+    info = client.people.getInfo(:user_id => client.test.login.id)
+	info.photos.count
   end
 end
