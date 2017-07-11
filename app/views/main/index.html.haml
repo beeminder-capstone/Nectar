@@ -4,10 +4,10 @@
 .row
   = render "welcome"
 .row-fluid
-  %p
-    - if current_user
-      Welcome, #{current_user.beeminder_user_id}!
-    - else
+  - if current_user
+    %h2 Welcome, #{current_user.beeminder_user_id}!
+  - else
+    %p
       Please,
       =link_to "Log in", signin_path
       with your Beeminder account.

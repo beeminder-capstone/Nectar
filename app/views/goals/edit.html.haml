@@ -14,23 +14,28 @@
   });
 .container
   .row
-    %h1
-      - if goal.persisted?
-        Edit Goal
-      - else
-        Add Goal
     .page-header
-      %h2
-        = [ provider.title, metric.title ].join(" - ")
-        = goal.delete_link if goal.persisted?
-    .col-lg-9
-      %h3
-        Decription
-      %p
-        = metric.description
+      %h1
+        - if goal.persisted?
+          Edit Goal
+        - else
+          Add Goal
+    %p
+      = image_tag("logos/#{provider.name}.png", alt: "#{provider.title} Logo", class: "small")
+      %br
+      Integration: 
+      = provider.title
+      %br
+      Metric: 
+      = metric.title
+      %br
+      Description: 
+      = metric.description
+    %br
+    %br
   .row
-    .col-lg-4
-      -#= simple_form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
+    .col-lg-6
+      -#= simple_form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key)}  do |f|
         .radio
           = f.radio_button :new_goal, true, {:checked => true}
           = f.label :newgoal, "Create a new Beeminder goal"
@@ -75,7 +80,7 @@
         .checkbox
           = f.input :active, {label: "Enabled"}
         = f.button :submit, {input_html: {class: %i(btn btn-default)}}
-      = form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key), html: {role: :form}}  do |f|
+      = form_for goal, {method: :post, url: upsert_goals_path(provider.name, metric.key)}  do |f|
         .form-group
           = f.label :beeminder_slug
           = f.select :slug, available_goal_slugs, { prompt: "Select Beeminder Slug"},{ class: "form-control" }
@@ -92,7 +97,8 @@
           - if lookup_context.template_exists?(template_name, [], true)
             = render template_name, pf: pf, params: f.object.params
         = f.submit "Save", class: %i(btn btn-default)
-    .col-lg-4
+      = goal.delete_link if goal.persisted?
+    .col-lg-6
       %h3 Last Datapoint
       %table.table.table-responsive#current-score
         %thead
