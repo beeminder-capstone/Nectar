@@ -41,10 +41,10 @@ class GoalDecorator < DelegateClass(Goal)
     [OpenStruct.new(timestamp: "now", value: msg)]
   end
 
-  def metric_link
+  def metric_link(id)
     title = metric.title
     link_to title,
-            ProviderDecorator.new(provider).metric_path(metric),
+            "/goals/#{provider.name}/#{metric.key}/#{id}",
             title: "Click to configure goal"
   end
   

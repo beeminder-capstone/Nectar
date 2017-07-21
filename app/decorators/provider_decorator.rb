@@ -40,7 +40,7 @@ class ProviderDecorator < DelegateClass(Provider)
   end
 
   def metric_path(metric)
-    "/goals/#{name}/#{metric.key}"
+    routes.new_goal_path(provider_name: name, metric_key: metric.key)
   end
 
   private

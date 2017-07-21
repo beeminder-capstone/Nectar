@@ -36,6 +36,10 @@ class GoalsController < AuthenticatedController
   helper_method def pledge_rates
     @_pledge_rates = [:y, :m, :w, :d, :h]
   end
+  
+  def new
+    edit
+  end
 
   def edit
     if credential.nil?
@@ -45,18 +49,27 @@ class GoalsController < AuthenticatedController
     end
   end
 
-  def upsert
+  def create
+    if goal.update_attributes goal_params
+      redirect_to root_path, notice: "Goal created successfully for #{provider.name}!"
+    else
+      flash[:error] = goal.errors.full_messages.join(" ")
+      redirect_to :back
+    end
+  end
+  
+  def update
     if goal.update_attributes goal_params
       redirect_to root_path, notice: "Goal updated successfully for #{provider.name}!"
     else
       flash[:error] = goal.errors.full_messages.join(" ")
-      render :edit
+      redirect_to :back
     end
   end
 
   def destroy
     goal.destroy!
-    redirect_to root_path, notice: "Goal deleted successfully ."
+    redirect_to root_path, notice: "Goal deleted successfully."
   end
 
   def reload
@@ -68,7 +81,7 @@ class GoalsController < AuthenticatedController
 
   def init_goal
     (g_id = params[:id]) && current_user.goals.where(id: g_id).first ||
-      credential.goals.find_or_initialize_by(metric_key: metric.key)
+      credential.goals.build(metric_key: metric.key)
   end
 
   def goal_params

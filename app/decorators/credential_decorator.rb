@@ -6,7 +6,7 @@
 =end
 class CredentialDecorator < DelegateClass(Credential)
   def connected_as
-    info["nickname"] || info["email"] || uid
+    info["email"] || info["nickname"] || info["name"] || uid
   end
 
   def status

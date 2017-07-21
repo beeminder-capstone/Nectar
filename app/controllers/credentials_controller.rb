@@ -36,10 +36,12 @@ class CredentialsController < AuthenticatedController
   end
 
   def update
-    unless credential.update_attributes credential_params
+    if credential.update_attributes credential_params
+      redirect_to "/credentials/#{provider.name}", notice: "Configured successfully!"
+    else
       flash[:error] = credential.errors.full_messages.join(" ")
+      redirect_to :back
     end
-    redirect_to "/credentials/#{provider.name}", notice: "Configured successfully!"
   end
 
   def destroy

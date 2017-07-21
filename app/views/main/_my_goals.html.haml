@@ -6,6 +6,7 @@
   %table.table.table-bordered#configured-goals
     %thead
       %tr
+        %td ID
         %td Provider
         %td Metric
         %td Status
@@ -14,8 +15,9 @@
     %tbody
       - goals.each do |goal|
         %tr
+          %td= goal.id
           %td= goal.provider_link
-          %td= goal.metric_link
+          %td= goal.metric_link(goal.id)
           %td= goal.status
           %td= goal.beeminder_link(current_user.beeminder_user_id)
           %td= goal.last_score

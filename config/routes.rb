@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :goals,
-    only: %i(destroy),
+    except: %(index show),
     constraints: { id: /\d+/} do
 
     collection do
@@ -29,14 +29,18 @@ Rails.application.routes.draw do
         PROVIDERS[name]&.find_metric(request[:metric_key])
       end
 
-      get ':provider_name/:metric_key',
+      get ':provider_name/:metric_key/:id',
         constraints: metric_exists,
         action: :edit,
         as: :edit
       post ':provider_name/:metric_key',
         constraints: metric_exists,
-        action: :upsert,
-        as: :upsert
+        action: :create,
+        as: :create
+      post ':provider_name/:metric_key/:id',
+        constraints: metric_exists,
+        action: :update,
+        as: :update
 
       post 'reload', action: :reload, as: :reload
     end
