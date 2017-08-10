@@ -10,11 +10,11 @@ class GoalsController < AuthenticatedController
   end
 
   helper_method def provider
-    @_provider ||= PROVIDERS[params[:provider_name]]
+    @_provider ||= PROVIDERS[params_provider_name]
   end
 
   helper_method def metric
-    @_metric ||= provider&.find_metric(params[:metric_key])
+    @_metric ||= provider&.find_metric(params_metric_key)
   end
 
   helper_method def credential
@@ -93,5 +93,13 @@ class GoalsController < AuthenticatedController
                     list_ids: [],
                     source_slugs: slug_keys
                   ])
+  end
+  
+  def params_provider_name
+    params[:provider_name] || (params[:goal] || {})[:provider_name]
+  end
+  
+  def params_metric_key
+    params[:metric_key] || (params[:goal] || {})[:metric_key]
   end
 end

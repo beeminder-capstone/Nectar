@@ -7,7 +7,7 @@
 class Provider
   attr_reader :auth_type, :adapter, :key
   delegate :find, :metrics, to: :metrics_repo
-  delegate :auth_type, :title, :website_link, to: :adapter
+  delegate :auth_type, :title, :website_link, :note, to: :adapter
   alias find_metric find
   alias name key
 

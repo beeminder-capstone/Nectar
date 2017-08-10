@@ -21,6 +21,10 @@ class BcycleAdapter < BaseAdapter
     def title
       "Austin Bcycle"
     end
+
+    def note
+      ""
+    end
   end
 
   def client

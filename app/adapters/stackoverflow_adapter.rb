@@ -16,6 +16,10 @@ class StackoverflowAdapter < BaseAdapter
       "Stack Overflow"
     end
 
+    def note
+      "Requires numerical User ID."
+    end
+
     def valid_credentials?(credentials)
       uid = credentials["uid"]
       uid.to_i > 0 && uid.to_i.to_s == uid

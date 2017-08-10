@@ -35,7 +35,7 @@
     %br
   .row
     .col-lg-6
-      -#= simple_form_for goal, {method: :post, url: goal.persisted? ? update_goals_path(provider.name, metric.key, goal.id) : create_goals_path(provider.name, metric.key)}  do |f|
+      -#= simple_form_for goal  do |f|
         .radio
           = f.radio_button :new_goal, true, {:checked => true}
           = f.label :newgoal, "Create a new Beeminder goal"
@@ -80,9 +80,11 @@
         .checkbox
           = f.input :active, {label: "Enabled"}
         = f.button :submit, {input_html: {class: %i(btn btn-default)}}
-      = form_for goal, {method: :post, url: goal.persisted? ? update_goals_path(provider.name, metric.key, goal.id) : create_goals_path(provider.name, metric.key)}  do |f|
+      = form_for goal  do |f|
+        = f.hidden_field :provider_name, value: provider.name
+        = f.hidden_field :metric_key, value: metric.key
         .form-group
-          = f.label :beeminder_slug
+          = f.label :beeminder_slug, "Select one of your Beeminder goals:"
           = f.select :slug, available_goal_slugs, { prompt: "Select Beeminder Slug"},{ class: "form-control" }
         .form-group
           = f.check_box :active

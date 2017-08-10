@@ -16,6 +16,10 @@ class WikipediaAdapter < BaseAdapter
       "Wikipedia"
     end
 
+    def note
+      ""
+    end
+
     def valid_credentials?(credentials)
       uid = credentials.fetch(:uid)
       uid.present?
@@ -23,7 +27,6 @@ class WikipediaAdapter < BaseAdapter
   end
 
   def edit_count
-    uid = credentials.fetch(:uid)
     resp = Faraday.get("https://en.wikipedia.org/w/api.php?action=query&list=users&ususers=#{uid}&usprop=editcount&format=json")
 
     user_info = JSON.parse(resp.body)["query"]["users"]&.first

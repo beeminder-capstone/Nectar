@@ -21,6 +21,10 @@ class TyperacerAdapter < BaseAdapter
     def title
       "Typeracer"
     end
+
+    def note
+      ""
+    end
   end
 
   def client

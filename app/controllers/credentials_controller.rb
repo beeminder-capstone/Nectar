@@ -17,7 +17,9 @@ class CredentialsController < AuthenticatedController
       end
   end
 
-  helper_method delegate :provider, to: :credential
+  helper_method def provider
+    @_provider ||= ProviderDecorator.new(credential.provider)
+  end
 
   before_action :require_provider
 

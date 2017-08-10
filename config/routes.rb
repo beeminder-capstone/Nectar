@@ -33,14 +33,6 @@ Rails.application.routes.draw do
         constraints: metric_exists,
         action: :edit,
         as: :edit
-      post ':provider_name/:metric_key',
-        constraints: metric_exists,
-        action: :create,
-        as: :create
-      post ':provider_name/:metric_key/:id',
-        constraints: metric_exists,
-        action: :update,
-        as: :update
 
       post 'reload', action: :reload, as: :reload
     end
