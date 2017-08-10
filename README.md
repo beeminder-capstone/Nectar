@@ -7,16 +7,7 @@ Backend for Nectar app
 
 Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
 
-Maintained by: [Teal Dulcet](https://github.com/tdulcet)
-
-Made by:
-* [Rachael Johnson](https://github.com/rhatchet)
-* [Kevin Bui](https://github.com/kevbui)
-* Teal Dulcet
-* [Nathan Axt](https://github.com/naxt25)
-* [Tim Sweeney](https://github.com/sweeney6)
-* [Nida Imran](https://github.com/nidaimran)
-* [Tuan Lam](https://github.com/t-lam)
+Remade and maintained by: [Teal Dulcet](https://github.com/tdulcet)
 
 Adapted from [Gal Tsubery's](https://github.com/tsubery/) [Quantifier](https://github.com/tsubery/quantifier/).
 
@@ -127,5 +118,13 @@ To contribute, simply fork and then create a pull request.
 
 ## License
 ##### Copyright © 2017 The [PSU](https://www.pdx.edu/) [CS](https://www.pdx.edu/computer-science/) Beeminder [Capstone](http://wiki.cs.pdx.edu/capstone/fall_2016/fall_2016.html) Team
+Originally made by:
+* [Rachael Johnson](https://github.com/rhatchet)
+* [Kevin Bui](https://github.com/kevbui)
+* [Teal Dulcet](https://github.com/tdulcet)
+* [Nathan Axt](https://github.com/naxt25)
+* [Tim Sweeney](https://github.com/sweeney6)
+* [Nida Imran](https://github.com/nidaimran)
+* [Tuan Lam](https://github.com/t-lam)
 This code is available under the "MIT License".
 Please see the file LICENSE in this distribution for license terms.
