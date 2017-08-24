@@ -20,10 +20,20 @@ class Datapoint
   end
 
   def to_beeminder
+    comment = ""
+    if comment_prefix.present?
+      comment += "#{comment_prefix} "
+    end
+    comment += "Nectar "
+    if timestamp.present?
+      comment += "for #{timestamp} "
+    end
+    comment += "@ #{Time.current}"
+    
     Beeminder::Datapoint
       .new value: value,
            timestamp: timestamp,
-           comment: "#{comment_prefix} Nectar for #{timestamp} @ #{Time.current}"
+           comment: comment
   end
 
   def <=>(other)

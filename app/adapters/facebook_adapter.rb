@@ -36,21 +36,21 @@ class FacebookAdapter < BaseAdapter
   #returns posts created by the user
   def fetch_posts()
     #wall = client.get_connection('me', 'posts', fields: %w(id from))
-    wall = client.get_connection('me', 'posts', fields: %w(id))
+    wall = client.get_connection('me', 'posts', limit: 1000, fields: %w(id))
 	#me = client.get_object("me")
     sum = 0
 	while wall.to_a.any? do
-      wall.each do |post|
+      #wall.each do |post|
         #sum += (post.from === me) ? 1 : 0
 		sum += wall.count
-      end
+      #end
 	  wall = wall.next_page
 	end
     sum
   end
   
   def fetch_likes()
-    wall = client.get_connection('me', 'likes', fields: %w(id))
+    wall = client.get_connection('me', 'likes', limit: 1000, fields: %w(id))
     sum = 0
 	while wall.to_a.any? do
       sum += wall.count
@@ -58,7 +58,7 @@ class FacebookAdapter < BaseAdapter
 	  wall = wall.next_page
 	end
 	
-	wall = client.get_connection('me', 'og.likes', fields: %w(id))
+	wall = client.get_connection('me', 'og.likes', limit: 1000, fields: %w(id))
 	while wall.to_a.any? do
       sum += wall.count
       

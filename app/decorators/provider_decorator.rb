@@ -35,7 +35,7 @@ class ProviderDecorator < DelegateClass(Provider)
     metrics.map do |metric|
       link_to metric.title,
               metric_path(metric),
-              title: metric.description + ". Click to add or configure."
+              title: metric.description + ". Click to add."
     end
   end
 

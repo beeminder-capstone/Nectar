@@ -12,6 +12,10 @@ class GoalDecorator < DelegateClass(Goal)
     active ? "Enabled" : "Disabled"
   end
 
+  def all_scores
+    scores.order(:timestamp)
+  end
+
   def last_score
     score = scores.order(:timestamp).last
     score.nil? ? "none" : score.value
@@ -30,13 +34,19 @@ class GoalDecorator < DelegateClass(Goal)
   end
 
   def safe_fetch_scores
+  Timeout::timeout(25) {
     fetch_scores
+  }
   rescue => e
     Rails.logger.error e.inspect
     Rails.logger.error e.backtrace
-    msg = "Could not fetch scores."
+    if e.is_a? Timeout::Error
+    msg = "Timeout fetching data. Try again later. There may be too much data to calculate the value immediately, but the goal should still work."
+    else
+    msg = "Could not fetch data."
+	end
     if e.is_a? BaseAdapter::AuthorizationError
-      msg += " Please authorize again"
+      msg += " Please authorize again."
     end
     [OpenStruct.new(timestamp: "now", value: msg)]
   end

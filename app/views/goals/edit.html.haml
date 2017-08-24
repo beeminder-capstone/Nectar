@@ -101,7 +101,7 @@
         = f.submit "Save", class: %i(btn btn-default)
       = goal.delete_link if goal.persisted?
     .col-lg-6
-      %h3 Last Datapoint
+      %h3 Current Score
       %table.table.table-responsive#current-score
         %thead
           %tr
@@ -112,4 +112,17 @@
             %tr
               %td= datapoint.timestamp || "Now"
               %td= datapoint.value
+    - if goal.persisted? && goal.all_scores.present?
+      .col-lg-6
+        %h3 Previous Datapoints
+        %table.table.table-responsive#current-score
+          %thead
+            %tr
+              %td Timestamp
+              %td Value
+          %tbody
+            - goal.all_scores.each do |datapoint|
+              %tr
+                %td= datapoint.timestamp
+                %td= datapoint.value
 
