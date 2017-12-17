@@ -24,7 +24,7 @@ class Datapoint
     if comment_prefix.present?
       comment += "#{comment_prefix} "
     end
-    comment += "Nectar "
+    comment += "🐝 Nectar "
     if timestamp.present?
       comment += "for #{timestamp} "
     end
